@@ -35,7 +35,7 @@ const post = (props) => {
   }, []);
 
   const commentSubmitHandler = (comment) => {
-    fetch('http://localhost:8080/feed/post-comment', {
+    fetch('https://miniblog-serverside.herokuapp.com/feed/post-comment', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -57,7 +57,7 @@ const post = (props) => {
         return res.json();
       })
       .then((resData) => {
-        fetch('http://localhost:8080/feed/post/' + props.id, {
+        fetch('https://miniblog-serverside.herokuapp.com/feed/post/' + props.id, {
           headers: {
             Authorization: 'Bearer ' + props.token,
           },
@@ -82,7 +82,7 @@ const post = (props) => {
 
   const upvoteHandler = () => {
       console.log('upvote handler running')
-      fetch('http://localhost:8080/feed/post/upvote', {
+      fetch('https://miniblog-serverside.herokuapp.com/feed/post/upvote', {
         method: 'POST',
         body: JSON.stringify({
           postId: props.id,
@@ -112,7 +112,7 @@ const post = (props) => {
 
 
   const downvoteHandler = () => {
-      fetch('http://localhost:8080/feed/post/downvote', {
+      fetch('https://miniblog-serverside.herokuapp.com/feed/post/downvote', {
         method: 'POST',
         body: JSON.stringify({
           postId: props.id,
