@@ -21,18 +21,6 @@ class Feed extends Component {
   };
 
   componentDidMount() {
-    fetch('URL')
-      .then(res => {
-        if (res.status !== 200) {
-          throw new Error('Failed to fetch user status.');
-        }
-        return res.json();
-      })
-      .then(resData => {
-        this.setState({ status: resData.status });
-      })
-      .catch(this.catchError);
-
     this.loadPosts();
   }
 
@@ -75,20 +63,6 @@ class Feed extends Component {
       .catch(this.catchError);
   };
 
-  statusUpdateHandler = event => {
-    event.preventDefault();
-    fetch('URL')
-      .then(res => {
-        if (res.status !== 200 && res.status !== 201) {
-          throw new Error("Can't update status!");
-        }
-        return res.json();
-      })
-      .then(resData => {
-        console.log(resData);
-      })
-      .catch(this.catchError);
-  };
 
   newPostHandler = () => {
     this.setState({ isEditing: true });
@@ -138,7 +112,6 @@ class Feed extends Component {
         return res.json();
       })
       .then(resData => {
-        console.log(resData);
         const post = {
           _id: resData.post._id,
           title: resData.post.title,
